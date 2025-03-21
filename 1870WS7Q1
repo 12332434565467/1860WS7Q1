@@ -1,0 +1,26 @@
+ IN A,B,C,D;
+    OUT d;
+
+    PARTS:
+    Not(in=A, out=notA);
+    Not(in=B, out=notB);
+    Not(in=C, out=notC);
+    Not(in=D, out=notD);
+
+    Or(a=notA, b=notB, out=ab1);
+    Or(a=ab1, b=C, out=abc1);
+    Or(a=abc1, b=D, out=term1);
+
+    Or(a=A, b=notB, out=ab2);
+    Or(a=ab2, b=C, out=abc2);
+    Or(a=abc2, b=notD, out=term2);
+
+    Or(a=notA, b=notC, out=ac3);
+    Or(a=ac3, b=notD, out=term3);
+
+    Or(a=notB, b=notC, out=bc4);
+    Or(a=bc4, b=D, out=term4);
+
+    And(a=term1, b=term2, out=t12);
+    And(a=t12, b=term3, out=t123);
+    And(a=t123, b=term4, out=d);
