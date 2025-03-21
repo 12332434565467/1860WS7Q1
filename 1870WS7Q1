@@ -1,4 +1,4 @@
- IN A,B,C,D;
+   IN A,B,C,D;
     OUT d;
 
     PARTS:
